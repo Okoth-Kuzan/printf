@@ -17,38 +17,33 @@ int _printf(const char *format, ...)
 	int re_char = 0; /* our set counter*/
 
 	va_start(para, format); /*start access on the arguments*/
-
 	for (; *format != '\0'; format++)
 	{
 		if (*format == '%')/*check the specifier sign*/
 		{
 			format++;
-			switch (*format)/*switch case for specifiers*/
+			if (*format == 'c')
 			{
-				case 'c':
+				char c = va_arg(para, int);/*access on the char's*/
+
+				te_putchar('c');
+				re_char++;
+			}
+			else if (*format == 's')
+			{
+				char *string = va_arg(para, char *);/*acces on strings*/
+
+				while (*string != '\0')
 				{
-					char c = va_arg(para, int);/*access on the char's*/
-					te_putchar('c');
+					te_putchar(*string);
+					string++;
 					re_char++;
-					break;
 				}
-				case 's':
-				{
-					char *string = va_arg(para, char *);/*acces on strings*/
-					while (*string != '\0')
-					{
-						te_putchar(*string);
-						string++;
-						re_char++;
-					}
-					break;
-				}
-				case '%':
-				{
-					te_putchar('%');/*printing out %*/
-					re_char++;
-					break;
-				}
+			}
+			else if (*format == '%')
+			{
+				te_putchar('%');/*printing out %*/
+				re_char++;
 			}
 		}
 		else
@@ -57,7 +52,6 @@ int _printf(const char *format, ...)
 			re_char++;
 		}
 	}
-
 	va_end(para);
 	return (re_char);
 }
