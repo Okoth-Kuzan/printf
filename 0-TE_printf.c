@@ -1,56 +1,57 @@
 #include "main.h"
 #include <stdio.h>
 
-/**
- * _printf - prototype function on
- * printf by Edward & Terance
- *
- * @format: string set to be printed
- * @...: elipse rep, arguments passed
- *
- * Return: number of characters
+/*
+ * _printf - prototype function of printf
+ * @format: format
+ * @... : argumaents
+ * Return: number of characters printed
  */
 
 int _printf(const char *format, ...)
 {
-	va_list para; /*declaring the variadic list */
-	int re_char = 0; /* our set counter*/
+	va_list para;
+	int re_char = 0;
 
-	va_start(para, format); /*start access on the arguments*/
-	for (; *format != '\0'; format++)
+	va_start(para, format);
+
+	while (*format != '\0')
 	{
-		if (*format == '%')/*check the specifier sign*/
+		if (*format != '%')
+		{
+			char c = *format;
+
+			write(1, &c, 1);
+			re_char++;
+		}
+		else
 		{
 			format++;
 			if (*format == 'c')
 			{
-				char c = va_arg(para, int);/*access on the char's*/
+				char c = va_arg(para, int);
 
 				write(1, &c, 1);
 				re_char++;
 			}
 			else if (*format == 's')
 			{
-				char *string = va_arg(para, char *);/*acces on strings*/
+				char *str = va_arg(para, char *);
 
-				while (*string != '\0')
+				while (*str != '\0')
 				{
-					write(1, string, 1);
-					string++;
+					write(1, str, 1);
+					str++;
 					re_char++;
 				}
 			}
 			else if (*format == '%')
 			{
-				write(1, '%', 1);/*printing out %*/
+				write(1, "%", 1);
 				re_char++;
 			}
 		}
-		else
-		{
-			write(1, format, 1);
-			re_char++;
-		}
+		format++;
 	}
 	va_end(para);
 	return (re_char);
