@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 			{
 				char c = va_arg(para, int);/*access on the char's*/
 
-				te_putchar('c');
+				write(1, &c, 1);
 				re_char++;
 			}
 			else if (*format == 's')
@@ -35,20 +35,20 @@ int _printf(const char *format, ...)
 
 				while (*string != '\0')
 				{
-					te_putchar(*string);
+					write(1, string, 1);
 					string++;
 					re_char++;
 				}
 			}
 			else if (*format == '%')
 			{
-				te_putchar('%');/*printing out %*/
+				write(1, '%', 1);/*printing out %*/
 				re_char++;
 			}
 		}
 		else
 		{
-			te_putchar(*format);
+			write(1, format, 1);
 			re_char++;
 		}
 	}
