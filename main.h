@@ -4,5 +4,6 @@
 
 /* Task 0 prototype function*/
 int _printf(const char *format, ...);
+int te_putchar(char c);
 
 #endif
