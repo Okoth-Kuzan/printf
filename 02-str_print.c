@@ -7,7 +7,7 @@
  * Return: string
  */
 
-char _print_string(const char *string)
+char _print_string(va_list para)
 {
 	int lenth = 0;
 	char *string = va_arg(para, char *);

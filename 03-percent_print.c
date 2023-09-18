@@ -7,7 +7,7 @@
  * Return: percent
  */
 
-int _percent_print()
+int _percent_print(va_list para)
 {
 	return write(1, "%", 1);
 }

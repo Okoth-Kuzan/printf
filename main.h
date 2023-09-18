@@ -1,15 +1,19 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+<<<<<<< HEAD
 #include <stdlib.h>
 #include <stdio.h>
+=======
+#include <stdio.h>
+#include <unistd.h>
+>>>>>>> e04792091a56cb2d347c97fea81958fde3af0734
 #include <stdarg.h>
 
-/* Task 0 prototype function*/
+/* Prototype functions*/
 int _printf(const char *format, ...);
-int te_putchar(char c);
-int _char_print(int c);
-char _print_string(const char *string);
-int _percent_print();
+int deals_char(const char *format, va_list args);
+int deals_string(const char *format, va_list args);
+int deals_percent(const char *format, va_list args);
 
-#endif
+#endif 
