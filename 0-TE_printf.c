@@ -1,58 +1,52 @@
 #include "main.h"
 #include <stdio.h>
 
-/*
- * _printf - prototype function of printf
- * @format: format
- * @... : argumaents
- * Return: number of characters printed
+/**
+ * _printf - prototype function on
+ * printf by Edward & Terance
+ *
+ * @format: string set to be printed
+ * @...: elipse rep, arguments passed
+ *
+ * Return: number of characters
  */
 
 int _printf(const char *format, ...)
 {
-	va_list para;
-	int re_char = 0;
+	va_list para; /*declaring the variadic list */
+	int re_char = 0; /* our set counter*/
 
-	va_start(para, format);
-
-	while (*format != '\0')
+	va_start(para, format); /*start access on the arguments*/
+	for (; *format != '\0'; format++)
 	{
-		if (*format != '%')
+		if (*format == '%')/*check the specifier sign*/
 		{
-			char c = *format;
-
-			write(1, &c, 1);
-			re_char++;
+			format++;
+			switch (*format)
+			{
+				case 'c':
+				{
+					re_char += _char_print(va_arg(para, int));
+					break;
+				}
+				case 's':
+				{
+					re_char += _print_string(va_arg(para, const char *));
+					break;
+				}
+				case '%':
+				{
+					re_char += _percent_print();
+					break;
+				}
+			}
 		}
 		else
 		{
-			format++;
-			if (*format == 'c')
-			{
-				char c = va_arg(para, int);
-
-				write(1, &c, 1);
-				re_char++;
-			}
-			else if (*format == 's')
-			{
-				char *str = va_arg(para, char *);
-
-				while (*str != '\0')
-				{
-					write(1, str, 1);
-					str++;
-					re_char++;
-				}
-			}
-			else if (*format == '%')
-			{
-				write(1, "%", 1);
-				re_char++;
-			}
+			re_char += _char_print(*format);
 		}
-		format++;
 	}
+
 	va_end(para);
 	return (re_char);
 }
