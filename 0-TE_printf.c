@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 					char *string = va_arg(para, char *);/*acces on strings*/
 					while (*string != '\0')
 					{
-						te_putchar('*string');
+						te_putchar(*string);
 						string++;
 						re_char++;
 					}
@@ -52,7 +52,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			te_putchar('*format');
+			te_putchar(*format);
 			re_char++;
 		}
 	}
