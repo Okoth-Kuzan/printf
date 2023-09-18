@@ -1,14 +1,22 @@
 #include "main.h"
 
 /**
- * _print-string - format specifier to print string
+ * _print_string - format specifier to print string
  * @string: string to be printed
  *
  * Return: string
  */
 
-char _print-string(const char *string)
+char _print_string(const char *string)
 {
-	int lenth = _print-string(string);
-	return write(1, string, lenth);
+	int lenth = 0;
+	char *string = va_arg(para, char *);
+
+	for (lenth = 0; string[lenth]; lenth++)
+	{
+		write(1, string, lenth);
+		lenth++;
+	}
+
+	return (lenth);
 }

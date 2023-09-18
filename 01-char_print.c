@@ -1,15 +1,17 @@
 #include "main.h"
 
 /**
- * _char-print - format specifier for printing
+ * _char_print - format specifier for printing
  * characters
  * @c: character to print
  *
  * Return: character
  */
 
-int _char-print(int c)
+int _char_print(va_list para)
 {
-	char stg_loc[1] = {c};
-	return (write(1, &c, 1));
+	char c = va_arg(para, int);
+
+	write(1, &c, 1);
+	return (1);
 }
