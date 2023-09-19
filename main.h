@@ -10,7 +10,7 @@
 /* prototype functions*/
 int _print_char(va_list para);
 int _print_str(va_list para);
-int _print_percent(va_list para);
+/*int _print_percent(va_list para);*/
 
 typedef struct spcf
 {
@@ -18,14 +18,7 @@ typedef struct spcf
 	int (*n)(va_list);/*pointer to handle function*/
 }spcf;
 
-/*specifier structure to support format specifier*/
-spcf specifiers[] = 
-{
-	{'c', _print_char},
-	{'s', _print_str},
-	{'%', _print_percent},
-	{0, NULL}
-};
+extern spcf specifiers[];
 
 
 int _printf(const char *format, ...);
