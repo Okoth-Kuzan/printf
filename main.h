@@ -1,5 +1,6 @@
 #ifndef main_h
 #define main_h
+#define UNUSED_PARAMETER(x) (void)(x)
 
 #include <stdarg.h>
 #include <stdio.h>

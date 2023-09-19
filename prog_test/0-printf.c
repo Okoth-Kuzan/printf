@@ -13,10 +13,10 @@
 int _printf(const char *format, ...)
 {
 	va_list para;
+	int re_char = 0;
+	int i = 0;
+
 	va_start(para, format);
-
-	int re_char = 0, fd = 0, i = 0;
-
 	while (*format != '\0')
 	{
 		if (*format == '%')
@@ -28,11 +28,10 @@ int _printf(const char *format, ...)
 				if (*format == specifiers[i].m)
 				{
 					re_char += specifiers[i].n(para);
-					fd = 1;
 					break;
 				}
 			}
-			if (!fd)
+			if (specifiers[i].m == 0)
 			{
 				char c = '%';
 				write(1, &c, 1);
