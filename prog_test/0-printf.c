@@ -22,8 +22,7 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			
-			for(i = 0; fmt_spcf[i].m != 0; i++)
+			for (i = 0; fmt_spcf[i].m != 0; i++)
 			{
 				if (*format == fmt_spcf[i].m)
 				{
@@ -34,6 +33,7 @@ int _printf(const char *format, ...)
 			if (fmt_spcf[i].m == 0)
 			{
 				char c = '%';
+
 				write(1, &c, 1);
 				re_char++;
 			}
@@ -41,6 +41,7 @@ int _printf(const char *format, ...)
 		else
 		{
 			char c = *format;
+
 			write(1, &c, 1);
 			re_char++;
 		}

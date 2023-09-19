@@ -1,11 +1,10 @@
 #include "main.h"
 
 /**
- * specifiers file
+ * specifiers - Array of specifiers
  */
 
-spcf specifiers[] =
-{
+spcf specifiers[] = {
 	{'c', _print_char},
 	{'s', _print_str},
 	{0, NULL}
