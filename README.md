@@ -1,1 +1,1 @@
-C - printf Terrance & Edward
+prototype functions
