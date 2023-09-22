@@ -10,6 +10,7 @@
 /* prototype functions*/
 int _print_char(va_list para);
 int _print_str(va_list para);
+int _puts(char *string);
 /*int _print_percent(va_list para);*/
 
 typedef struct spcf
